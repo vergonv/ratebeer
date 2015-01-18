@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150115142335) do
 
-  create_table "beers", force: :cascade do |t|
+  create_table "beers", force: true do |t|
     t.string   "name"
     t.string   "style"
     t.integer  "brewery_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150115142335) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "breweries", force: :cascade do |t|
+  create_table "breweries", force: true do |t|
     t.string   "name"
     t.integer  "year"
     t.datetime "created_at", null: false
