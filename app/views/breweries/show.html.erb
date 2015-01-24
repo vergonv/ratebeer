@@ -19,9 +19,9 @@
 <% if @brewery.ratings.empty? %>
   has not yet been rated!
  <% elsif  @brewery.ratings.to_a.length==1%>
-   has <%=  @brewery.ratings.to_a.length %> rating average <%=@brewery.average_rating%> 
+   has <%=  @brewery.ratings.to_a.length %> rating average <%=@brewery.rating_average%> 
 <% else %>
-  has <%=  @brewery.ratings.to_a.length %> ratings average <%=@brewery.average_rating%> 
+  has <%=  @brewery.ratings.to_a.length %> ratings average <%=@brewery.rating_average%> 
 <% end %>
 </p>
 <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
