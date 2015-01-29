@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+<% if @user.ratings.empty? %>
+  has not yet been rated!
+ <% elsif  @user.ratings.to_a.length==1%>
+  has made <%=  @user.ratings.to_a.length %> rating 
+  <% else %>
+  has made <%=  @user.ratings.to_a.length %> ratings
+<% end %>
+<p>
+	member of 
+ <% @user.beer_clubs.each do |b| %>
+   <%=link_to b.name, b%>
+ <% end %>
+<h2> ratings </h2>
+</p> <% @user.ratings.each do |rating| %>
+    <li> <%= rating %> <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' }%></li>
+ <% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
