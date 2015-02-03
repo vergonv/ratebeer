@@ -21,13 +21,14 @@ class BeersController < ApplicationController
 
   # GET /beers/1/edit
   def edit
+    @breweries = Brewery.all
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
   end
 
   # POST /beers
   # POST /beers.json
   def create
     @beer = Beer.new(beer_params)
-
 
     respond_to do |format|
       if @beer.save

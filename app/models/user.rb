@@ -1,14 +1,17 @@
 class User < ActiveRecord::Base
- include RatingAverage
- has_secure_password
- validates :username, uniqueness: true, length: { minimum: 3, maximum:15 }
- validates :password,  length: { minimum: 4}
- has_many :raters, -> { uniq }, through: :ratings, source: :user
- has_many :beers, through: :ratings
- has_many :beer_clubs, through: :memberships
- has_many :ratings
- has_many :memberships
- def to_s  
-   "#{self.beer.name}    #{self.score}"
-  end
+  include RatingAverage
+
+  has_secure_password
+
+  has_many :ratings, dependent: :destroy
+  has_many :beers, through: :ratings
+  has_many :memberships, dependent: :destroy
+  has_many :beer_clubs, through: :memberships
+
+  validates :username, uniqueness: true,
+                       length: { in: 3..15 }
+
+  validates :password, length: { minimum: 4 }
+
+  validates :password, format: { with: /\d.*[A-Z]|[A-Z].*\d/,  message: "has to contain one number and one upper case letter" }
 end
