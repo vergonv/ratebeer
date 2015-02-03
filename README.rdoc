@@ -1,7 +1,1 @@
 https://ror2015.herokuapp.com/breweries
-   
-    <% #if  current_user.nil? %>
-    <%= #link_to 'signin', signin_path %>
-    <% #elsif not  current_user.nil? %>
-  <%= #link_to 'jotain', user_path%>
-<%end%>
